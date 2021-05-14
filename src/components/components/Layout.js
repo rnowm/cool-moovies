@@ -3,27 +3,54 @@ import { Color, getTxtColorByBkg, device } from "../utils/variables";
 
 const defaultPadding = 20;
 
+const rdmColors = [
+  "blue",
+  "gold",
+  "green",
+  "magenta",
+  "red",
+  "salmon",
+  "yellow",
+  "purple",
+  "teal",
+  "navy",
+];
+
 const setPadding = (padding) =>
   padding.toString().length && padding !== true ? padding : defaultPadding;
 
 export const Common = styled.div`
-  ${(props) =>
-    props.fixed &&
-    `
-    position: fixed;
-`};
+  position: ${(props) =>
+    props.fixed
+      ? "fixed"
+      : props.absolute
+      ? "absolute"
+      : props.relative
+      ? "relative"
+      : "static"};
   display: inline-flex;
   color: ${(props) =>
     props.color ? Color(props.color) : getTxtColorByBkg(props.bkg, props.fade)};
   ${(props) =>
     props.bkg && `background-color: ${Color(props.bkg, props.fade)}`};
   ${(props) =>
+    props.randomBkg &&
+    `background-color: ${Color(
+      rdmColors[Math.floor(Math.random() * rdmColors.length)],
+      props.fade
+    )}`};
+  ${(props) =>
     props.border &&
     `border: ${props.borderSize || 1}px solid ${Color(
       props.border,
       props.borderFade ? props.borderFade : props.fade ? props.fade : "default"
     )}`};
-  ${(props) => props.radius && `border-radius: ${props.radius}px;`};
+  ${(props) =>
+    props.radius &&
+    `
+      border-radius: ${props.radius}px;
+      overflow: hidden;
+  `};
   ${(props) => props.paddingAll && `padding:${setPadding(props.paddingAll)}px`}
   ${(props) =>
     props.paddingTop && `padding-top:${setPadding(props.paddingTop)}px`};
@@ -128,6 +155,19 @@ export const Column = styled(Common)`
   ${(props) => props.stretch && "width: 100%"};
 `;
 
+export const Circle = styled(Column)`
+  display: inline-flex;
+  flex-direction: column;
+  height: ${(props) => props.radius && `${Number(props.radius) * 2}px`};
+  width: ${(props) => props.radius && `${Number(props.radius) * 2}px`};
+  border-radius: ${(props) => props.radius && `${props.radius}px`};
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  ${(props) => props.shadow && `box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25)`};
+`;
+
 export const AppWrapper = styled.div`
   display: flex;
   min-height: 100vh;
@@ -170,6 +210,7 @@ export const Content = styled.div`
   margin: 0 auto;
   min-height: 100vh;
   max-width: ${device.desktop};
+  ${(props) => props.fit && "width: 100%"};
 `;
 
 export const Grid = styled.div`
@@ -177,17 +218,21 @@ export const Grid = styled.div`
   grid-template-columns: 100%;
   grid-template-rows: auto;
   grid-gap: ${defaultPadding};
+  text-align: center;
 
+  @media ${device.mobileM} {
+    grid-template-columns: 100%;
+  }
   @media ${device.mobileL} {
     grid-template-columns: 50% 50%;
   }
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     grid-template-columns: 33.33% 33.33% 33.33%;
   }
-  @media ${device.laptop} {
+  @media ${device.laptopL} {
     grid-template-columns: 25% 25% 25% 25%;
   }
-  @media ${device.laptopL} {
+  @media ${device.desktop} {
     grid-template-columns: 20% 20% 20% 20% 20%;
   }
 `;

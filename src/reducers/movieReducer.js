@@ -8,15 +8,11 @@ const initialState = fromJS({
   error: null,
 });
 
-export default function moviesReducer(state = initialState, action) {
+export default function allMoviesReducer(state = initialState, action) {
   switch (action.type) {
-    case ITEM.GET:
-    case ITEM.GET_ALL:
-    case ITEM.SAVE:
-    case ITEM.UPDATE:
-    case ITEM.DELETE:
-    case ITEM.SUCCESS:
-    case ITEM.FAILURE:
+    case ITEM.GET_MOVIE_DETAILS:
+    case ITEM.SUCCESS_MOVIE_DETAILS:
+    case ITEM.FAILURE_MOVIE_DETAILS:
       return state.merge(action.payload);
     default:
       return state;

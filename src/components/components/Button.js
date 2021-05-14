@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Color } from "../utils/variables";
 
 const ButtonWrapper = styled.button`
   display: flex;
-  height: 3rem;
-  width: 3rem;
+  height: 40px;
+  width: 40px;
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: center;
@@ -16,8 +17,15 @@ const ButtonWrapper = styled.button`
   appearance: none;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+
   &:focus {
     outline: 0;
+  }
+
+  &:hover {
+    background-color: ${Color("gold", "0.5")};
   }
 `;
 

@@ -1,9 +1,11 @@
 import { combineReducers } from "redux-immutable";
-import moviesReducer from "./moviesReducer";
+import allMoviesReducer from "./allMoviesReducer";
+import movieReducer from "./movieReducer";
 
 const rootReducer = (asyncReducers) =>
   combineReducers({
-    movies: moviesReducer,
+    allMovies: allMoviesReducer,
+    movie: movieReducer,
     ...asyncReducers,
   });
 

@@ -1,28 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { moviesSelector, fetchingSelector } from "../selectors/moviesSelector";
+import {
+  allMoviesSelector,
+  fetchingSelector,
+} from "../selectors/allMoviesSelector";
 import { item } from "../actions";
+
 import { LoadingAnimation } from "../components/LoadingAnimation";
 import {
   Grid,
   Content,
-  FixedWrapper,
   MainWrapper,
   AppWrapper,
-  Column,
-  Row,
   Header,
   Thumbnail,
 } from "../components/components";
 
 export const HomeContainer = () => {
   const dispatch = useDispatch();
-  const movies = useSelector(moviesSelector);
+  const allMovies = useSelector(allMoviesSelector);
   const fetching = useSelector(fetchingSelector);
 
   useEffect(() => {
-    dispatch(item.requestAllMovies("1"));
+    dispatch(item.requestAllMovies());
   }, [dispatch]);
 
   return fetching ? (
@@ -30,11 +31,13 @@ export const HomeContainer = () => {
   ) : (
     <AppWrapper>
       <MainWrapper>
-        <Header title />
+        <Header logo />
         <Content>
           <Grid>
-            {movies?.results?.map((movie) => (
-              <Thumbnail key={movie.id} movie={movie}></Thumbnail>
+            {allMovies?.results?.map((movie) => (
+              <Link key={movie.id} to={`details/${movie.id}`}>
+                <Thumbnail movie={movie} />
+              </Link>
             ))}
           </Grid>
         </Content>

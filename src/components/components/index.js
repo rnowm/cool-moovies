@@ -1,6 +1,5 @@
 export { Button } from "./Button";
 export { Header } from "./Header";
-export { Image } from "./Image";
 export {
   Grid,
   Content,

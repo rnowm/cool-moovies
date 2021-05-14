@@ -71,9 +71,6 @@ export const colorList = {
     0.1: "#F5F5F5",
     0.05: "#FAFAFA",
   },
-  sketch: {
-    default: "rgb(250, 100, 0)",
-  },
 };
 
 export const getTxtColorByBkg = (bkg, fade) => {
@@ -105,14 +102,15 @@ export const Color = (color, fade) => {
 
 export const breakpoint = {
   mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
+  mobileM: "425px",
+  mobileL: "550px",
   mobileXL: "640px",
   tablet: "768px",
   tabletL: "900px",
   laptop: "1024px",
   laptopL: "1118px",
-  desktop: "2560px",
+  desktop: "1400px",
+  desktopL: "2560px",
 };
 
 export const device = {
@@ -125,5 +123,5 @@ export const device = {
   laptop: `(min-width: ${breakpoint.laptop})`,
   laptopL: `(min-width: ${breakpoint.laptopL})`,
   desktop: `(min-width: ${breakpoint.desktop})`,
-  desktopL: `(min-width: ${breakpoint.desktop})`,
+  desktopL: `(min-width: ${breakpoint.desktopL})`,
 };
