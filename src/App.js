@@ -7,8 +7,7 @@ import { WithErrors } from "./hocs/WithErrors";
 export const App = () => (
   <Switch>
     <Route exact path="/" component={HomeContainer} />
-    <Route exact path="/details" component={DetailsComponent} />
-    {/* <Route exact path="/details" component={Detailspage} /> */}
+    <Route exact path="/details/:id" component={DetailsComponent} />
   </Switch>
 );
 

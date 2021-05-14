@@ -1,14 +1,14 @@
-import { createActionTypes } from '../utils'
+import { createActionTypes } from "../utils";
 
-export const ITEM = createActionTypes('ITEM', [
-  'GET',
-  'GET_ONE',
-  'SAVE',
-  'PUT',
-  'PATCH',
-  'DELETE',
-  'SUCCESS',
-  'FAILURE',
-])
+export const ITEM = createActionTypes("ITEM", [
+  "GET",
+  "GET_ALL",
+  "SAVE",
+  "PUT",
+  "PATCH",
+  "DELETE",
+  "SUCCESS",
+  "FAILURE",
+]);
 
-export default ITEM
+export default ITEM;

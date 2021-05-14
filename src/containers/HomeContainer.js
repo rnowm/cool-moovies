@@ -1,40 +1,44 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  exampleDataSelector,
-  fetchingSelector,
-} from "../selectors/exampleSelector";
+import { moviesSelector, fetchingSelector } from "../selectors/moviesSelector";
 import { item } from "../actions";
 import { LoadingAnimation } from "../components/LoadingAnimation";
+import {
+  Grid,
+  Content,
+  FixedWrapper,
+  MainWrapper,
+  AppWrapper,
+  Column,
+  Row,
+  Header,
+  Thumbnail,
+} from "../components/components";
 
 export const HomeContainer = () => {
   const dispatch = useDispatch();
-  const exampleData = useSelector(exampleDataSelector);
+  const movies = useSelector(moviesSelector);
   const fetching = useSelector(fetchingSelector);
 
   useEffect(() => {
-    dispatch(item.requestOne("1"));
+    dispatch(item.requestAllMovies("1"));
   }, [dispatch]);
 
   return fetching ? (
     <LoadingAnimation />
   ) : (
-    <div>
-      <h1>Example Container</h1>
-      <br />
-      <div className="row">
-        <div className="card">
-          <h4 className="card-header">Example Data:</h4>
-          <div className="card-body">
-            <h4 className="card-title">{exampleData.title}</h4>
-            <p className="card-text">{exampleData.body}</p>
-            <Link to="/details" className="btn btn-warning">
-              Link to Example Component
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+    <AppWrapper>
+      <MainWrapper>
+        <Header title />
+        <Content>
+          <Grid>
+            {movies?.results?.map((movie) => (
+              <Thumbnail key={movie.id} movie={movie}></Thumbnail>
+            ))}
+          </Grid>
+        </Content>
+      </MainWrapper>
+    </AppWrapper>
   );
 };

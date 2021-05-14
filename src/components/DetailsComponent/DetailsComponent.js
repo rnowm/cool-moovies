@@ -7,6 +7,6 @@ export const DetailsComponent = () => (
       Back
     </Link>
     <br />
-    <h1>Example Component</h1>
+    <h1>Detailst</h1>
   </div>
 );
