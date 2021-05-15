@@ -7,7 +7,6 @@ import { API_KEY } from "../utils";
 function* handleGetMovieDetails(action) {
   try {
     const { id } = action.payload;
-    debugger;
     const { data } = yield call(
       axios.get,
       `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`

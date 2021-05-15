@@ -2,8 +2,9 @@ import React from "react";
 
 import { Color } from "../utils/variables";
 
-import { Column, Row, Circle } from "./Layout";
+import { Column, Row } from "./Layout";
 import { Label } from "./Typography";
+import { Rate } from "./Progress";
 
 import styled from "styled-components";
 
@@ -17,13 +18,6 @@ const Title = styled(Row)`
   min-height: 50px;
   align-items: center;
   margin-bottom: 10px;
-`;
-
-const Rate = styled(Circle)`
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  border: 2px solid white;
 `;
 
 const ThumbnailWrapper = styled(Column)`
@@ -91,11 +85,7 @@ export const Thumbnail = ({ movie, details }) => (
           </Label>
         </Title>
         {(movie.vote_average || movie.vote_average === 0) && (
-          <Rate radius="15" shadow bkg="gold">
-            <Label small bold>
-              {movie.vote_average}
-            </Label>
-          </Rate>
+          <Rate autoColor value={movie.vote_average} />
         )}
       </>
     )}

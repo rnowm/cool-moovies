@@ -8,7 +8,7 @@ function* handleGetAllMovies(action) {
   try {
     const { data } = yield call(
       axios.get,
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
+      `https://api.themoviedb.org/3/trending/week/day?api_key=${API_KEY}`
     );
     yield put(item.successAllMovies({ data }));
   } catch (e) {

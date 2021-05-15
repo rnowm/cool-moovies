@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, getTxtColorByBkg, device } from "../utils/variables";
+import { Color, getTxtColorByBkg, device, deviceMax } from "../utils/variables";
 
 const defaultPadding = 20;
 
@@ -139,6 +139,14 @@ export const Row = styled(Common)`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  `};
+
+  ${(props) =>
+    props.toColumn &&
+    `
+    @media ${deviceMax[props.toColumn]} {
+      flex-direction: column;
+    }
   `};
 `;
 

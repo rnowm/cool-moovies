@@ -31,7 +31,7 @@ export const HomeContainer = () => {
   ) : (
     <AppWrapper>
       <MainWrapper>
-        <Header logo />
+        <Header logo title="Trending this week" />
         <Content>
           <Grid>
             {allMovies?.results?.map((movie) => (

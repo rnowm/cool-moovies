@@ -125,3 +125,16 @@ export const device = {
   desktop: `(min-width: ${breakpoint.desktop})`,
   desktopL: `(min-width: ${breakpoint.desktopL})`,
 };
+
+export const deviceMax = {
+  mobileS: `(max-width: ${breakpoint.mobileS})`,
+  mobileM: `(max-width: ${breakpoint.mobileM})`,
+  mobileL: `(max-width: ${breakpoint.mobileL})`,
+  mobileXL: `(max-width: ${breakpoint.mobileXL})`,
+  tablet: `(max-width: ${breakpoint.tablet})`,
+  tabletL: `(max-width: ${breakpoint.tabletL})`,
+  laptop: `(max-width: ${breakpoint.laptop})`,
+  laptopL: `(max-width: ${breakpoint.laptopL})`,
+  desktop: `(max-width: ${breakpoint.desktop})`,
+  desktopL: `(max-width: ${breakpoint.desktopL})`,
+};

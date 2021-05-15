@@ -25,7 +25,7 @@ const ButtonWrapper = styled.button`
   }
 
   &:hover {
-    background-color: ${Color("gold", "0.5")};
+    background-color: ${Color("purple", "0.3")};
   }
 `;
 
