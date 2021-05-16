@@ -1,6 +1,6 @@
 {
-  "name": "cool-moovies",
-  "version": "1.0.0",
+  "name": "cool-movies",
+  "version": "1.0.1",
   "description": "Browse coolest movies in an easy way",
   "main": "index.js",
   "repository": "https://github.com/rnowm/cool-movies",
