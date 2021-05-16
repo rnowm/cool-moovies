@@ -7,7 +7,6 @@ import {
 } from "../selectors/allMoviesSelector";
 import { item } from "../actions";
 
-import { LoadingAnimation } from "../components/LoadingAnimation";
 import {
   Grid,
   Content,
@@ -15,7 +14,7 @@ import {
   AppWrapper,
   Header,
   Thumbnail,
-} from "../components/components";
+} from "cmr-components";
 
 export const HomeContainer = () => {
   const dispatch = useDispatch();
@@ -26,20 +25,20 @@ export const HomeContainer = () => {
     dispatch(item.requestAllMovies());
   }, [dispatch]);
 
-  return fetching ? (
-    <LoadingAnimation />
-  ) : (
+  return (
     <AppWrapper>
       <MainWrapper>
         <Header logo title="Trending this week" />
         <Content>
-          <Grid>
-            {allMovies?.results?.map((movie) => (
-              <Link key={movie.id} to={`details/${movie.id}`}>
-                <Thumbnail movie={movie} />
-              </Link>
-            ))}
-          </Grid>
+          {!fetching && (
+            <Grid>
+              {allMovies?.results?.map((movie) => (
+                <Link key={movie.id} to={`details/${movie.id}`}>
+                  <Thumbnail movie={movie} />
+                </Link>
+              ))}
+            </Grid>
+          )}
         </Content>
       </MainWrapper>
     </AppWrapper>

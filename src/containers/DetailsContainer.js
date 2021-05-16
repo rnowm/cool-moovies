@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { movieSelector, fetchingSelector } from "../selectors/movieSelector";
 import { item } from "../actions";
 
-import { LoadingAnimation } from "../components/LoadingAnimation";
 import {
   Content,
   MainWrapper,
@@ -16,20 +15,7 @@ import {
   Column,
   Row,
   Progress,
-} from "../components/components";
-
-import styled from "styled-components";
-
-const Block = ({ title, children }) => (
-  <Column marginTop>
-    <Row marginBottom="5">
-      <Label semibold large color="white">
-        {title}
-      </Label>
-    </Row>
-    <Label color="white">{children}</Label>
-  </Column>
-);
+} from "cmr-components";
 
 export const DetailsContainer = () => {
   const dispatch = useDispatch();
@@ -42,14 +28,12 @@ export const DetailsContainer = () => {
     dispatch(item.requestMovieDetails(movieId));
   }, [dispatch]);
 
-  return fetching ? (
-    <LoadingAnimation />
-  ) : (
+  return (
     <AppWrapper>
       <MainWrapper>
         <Header logo back />
         <Content fit>
-          {movie && (
+          {!fetching && movie && (
             <Column stretch>
               <Row toColumn="tablet" bkg="purple" radius="8" marginAll>
                 <Row noShrink>
@@ -98,18 +82,6 @@ export const DetailsContainer = () => {
                       </Label>
                     </Block>
                   )}
-
-                  {/* {movie.production_companies && (
-                    <Row marginTop>
-                      {movie.production_companies.map((pc) => (
-                        <img
-                          width="50"
-                          src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${pc.logo_path}`}
-                          alt={pc.name}
-                        />
-                      ))}
-                    </Row>
-                  )} */}
                 </Column>
               </Row>
             </Column>
@@ -119,3 +91,14 @@ export const DetailsContainer = () => {
     </AppWrapper>
   );
 };
+
+const Block = ({ title, children }) => (
+  <Column marginTop>
+    <Row marginBottom="5">
+      <Label semibold large color="white">
+        {title}
+      </Label>
+    </Row>
+    <Label color="white">{children}</Label>
+  </Column>
+);
